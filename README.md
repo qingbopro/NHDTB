@@ -1,5 +1,7 @@
 # NHDTB
 
+> Next.js + Hono + Drizzle ORM + TRPC + Better-Auth = NHDTB
+
 This project was created with [Better-T-Stack](https://github.com/AmanVarshney01/create-better-t-stack), a modern TypeScript stack that combines Next.js, Hono, TRPC, and more.
 
 ## Features
