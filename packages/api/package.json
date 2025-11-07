@@ -8,6 +8,14 @@
     "./*": {
       "types": "./dist/*.d.ts",
       "default": "./src/*.ts"
+    },
+    "./routers": {
+      "types": "./dist/routers/index.d.ts",
+      "default": "./src/routers/index.ts"
+    },
+    "./routers/*": {
+      "types": "./dist/routers/*.d.ts",
+      "default": "./src/routers/*.ts"
     }
   },
   "type": "module",

@@ -22,7 +22,7 @@ catalogs:
       specifier: ^17.2.2
       version: 17.2.3
     drizzle-orm:
-      specifier: ^0.44.2
+      specifier: 0.44.7
       version: 0.44.7
     hono:
       specifier: ^4.8.2
@@ -49,7 +49,7 @@ importers:
         version: 4.1.12
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.3.4
+        specifier: 2.3.4
         version: 2.3.4
       '@types/node':
         specifier: ^22.13.11
@@ -84,6 +84,9 @@ importers:
       '@hono/trpc-server':
         specifier: ^0.4.0
         version: 0.4.0(@trpc/server@11.7.1(typescript@5.9.3))(hono@4.10.4)
+      '@hono/zod-validator':
+        specifier: ^0.7.4
+        version: 0.7.4(hono@4.10.4)(zod@4.1.12)
       '@trpc/server':
         specifier: 'catalog:'
         version: 11.7.1(typescript@5.9.3)
@@ -93,6 +96,9 @@ importers:
       dotenv:
         specifier: 'catalog:'
         version: 17.2.3
+      drizzle-zod:
+        specifier: ^0.8.3
+        version: 0.8.3(drizzle-orm@0.44.7(kysely@0.28.8)(mysql2@3.15.3))(zod@4.1.12)
       hono:
         specifier: 'catalog:'
         version: 4.10.4
@@ -121,6 +127,9 @@ importers:
       '@NHDTB/auth':
         specifier: workspace:*
         version: link:../../packages/auth
+      '@NHDTB/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       '@tanstack/react-form':
         specifier: ^1.12.3
         version: 1.23.8(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -148,6 +157,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      drizzle-orm:
+        specifier: 'catalog:'
+        version: 0.44.7(kysely@0.28.8)(mysql2@3.15.3)
       lucide-react:
         specifier: ^0.546.0
         version: 0.546.0(react@19.2.0)
@@ -719,6 +731,12 @@ packages:
     peerDependencies:
       '@trpc/server': ^10.10.0 || >11.0.0-rc
       hono: '>=4.*'
+
+  '@hono/zod-validator@0.7.4':
+    resolution: {integrity: sha512-biKGn3BRJVaftZlIPMyK+HCe/UHAjJ6sH0UyXe3+v0OcgVr9xfImDROTJFLtn9e3XEEAHGZIM9U6evu85abm8Q==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.25.0 || ^4.0.0
 
   '@img/colour@1.0.0':
     resolution: {integrity: sha512-A5P/LfWGFSl6nsckYtjw9da+19jB8hkJ6ACTGcDfEJ0aE+l2n2El7dsVM7UVHZQ9s2lmYMWlrS21YLy2IR1LUw==}
@@ -2184,6 +2202,12 @@ packages:
       sqlite3:
         optional: true
 
+  drizzle-zod@0.8.3:
+    resolution: {integrity: sha512-66yVOuvGhKJnTdiqj1/Xaaz9/qzOdRJADpDa68enqS6g3t0kpNkwNYjUuaeXgZfO/UWuIM9HIhSlJ6C5ZraMww==}
+    peerDependencies:
+      drizzle-orm: '>=0.36.0'
+      zod: ^3.25.0 || ^4.0.0
+
   dts-resolver@2.1.2:
     resolution: {integrity: sha512-xeXHBQkn2ISSXxbJWD828PFjtyg+/UrMDo7W4Ffcs7+YWCquxU8YjV1KoxuiL+eJ5pg3ll+bC6flVv61L3LKZg==}
     engines: {node: '>=20.18.0'}
@@ -3119,6 +3143,11 @@ snapshots:
     dependencies:
       '@trpc/server': 11.7.1(typescript@5.9.3)
       hono: 4.10.4
+
+  '@hono/zod-validator@0.7.4(hono@4.10.4)(zod@4.1.12)':
+    dependencies:
+      hono: 4.10.4
+      zod: 4.1.12
 
   '@img/colour@1.0.0':
     optional: true
@@ -4470,6 +4499,11 @@ snapshots:
     optionalDependencies:
       kysely: 0.28.8
       mysql2: 3.15.3
+
+  drizzle-zod@0.8.3(drizzle-orm@0.44.7(kysely@0.28.8)(mysql2@3.15.3))(zod@4.1.12):
+    dependencies:
+      drizzle-orm: 0.44.7(kysely@0.28.8)(mysql2@3.15.3)
+      zod: 4.1.12
 
   dts-resolver@2.1.2: {}
 

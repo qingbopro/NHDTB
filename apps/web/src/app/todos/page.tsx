@@ -18,6 +18,7 @@ import { trpc } from "@/utils/trpc";
 export default function TodosPage() {
   const [newTodoText, setNewTodoText] = useState("");
 
+  // SUGGESTION: 这是一个trpcClient 配合 tanstack query的demo
   const todos = useQuery(trpc.todo.getAll.queryOptions());
   const createMutation = useMutation(
     trpc.todo.create.mutationOptions({
@@ -110,7 +111,11 @@ export default function TodosPage() {
                     />
                     <label
                       htmlFor={`todo-${todo.id}`}
-                      className={`${todo.completed ? "text-muted-foreground line-through" : ""}`}
+                      className={`${
+                        todo.completed
+                          ? "text-muted-foreground line-through"
+                          : ""
+                      }`}
                     >
                       {todo.text}
                     </label>
