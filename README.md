@@ -25,6 +25,7 @@ First, install the dependencies:
 ```bash
 pnpm install
 ```
+
 ## Database Setup
 
 This project uses MySQL with Drizzle ORM.
@@ -33,10 +34,10 @@ This project uses MySQL with Drizzle ORM.
 2. Update your `apps/server/.env` file with your MySQL connection details.
 
 3. Apply the schema to your database:
+
 ```bash
 pnpm run db:push
 ```
-
 
 Then, run the development server:
 
@@ -46,12 +47,6 @@ pnpm run dev
 
 Open [http://localhost:3001](http://localhost:3001) in your browser to see the web application.
 The API is running at [http://localhost:3000](http://localhost:3000).
-
-
-
-
-
-
 
 ## Project Structure
 
