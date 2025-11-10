@@ -11,14 +11,14 @@ export default async function DashboardPage() {
     },
   });
 
-  if (!session?.user) {
-    redirect("/login");
-  }
+  // if (!session?.user) {
+  //   redirect("/login");
+  // }
 
   return (
     <div>
       <h1>Dashboard</h1>
-      <p>Welcome {session.user.name}</p>
+      <p>Welcome {session?.user.name}</p>
       <Dashboard session={session} />
     </div>
   );
