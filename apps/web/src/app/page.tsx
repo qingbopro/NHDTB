@@ -1,5 +1,5 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { trpc } from "@/utils/trpc";
 
@@ -33,6 +33,20 @@ const TITLE_TEXT = `
     ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
  `;
 
+// SUGGESTION: 这是一个通过fetch调用hono路由的demo
+const createTodo = async (input: string) => {
+  await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/todo/add`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      text: input,
+    }),
+  });
+};
+
 export default function Home() {
   const healthCheck = useQuery(trpc.healthCheck.queryOptions());
   const protectedCheck = useQuery({
@@ -40,19 +54,13 @@ export default function Home() {
     queryFn: fetchProtected,
   });
 
-  // SUGGESTION: 这是一个通过fetch调用hono路由的demo
-  const createTodo = async () => {
-    await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/todo/add`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        text: "New Todo",
-      }),
-    });
-  };
+  const addMutation = useMutation({
+    mutationFn: createTodo,
+  });
+
+  useEffect(() => {
+    console.log(addMutation.error);
+  }, [addMutation.error]);
 
   return (
     <div className="container mx-auto max-w-3xl px-4 py-2">
@@ -79,7 +87,7 @@ export default function Home() {
           <button
             className="rounded-md bg-blue-500 px-4 py-2 text-white"
             type="button"
-            onClick={createTodo}
+            onClick={() => addMutation.mutate("hello world")}
           >
             create
           </button>
